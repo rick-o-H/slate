@@ -3,12 +3,10 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <p>HEY TEAM TRUFFLE - Rick</p>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -21,221 +19,169 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Hungry Bunch API! This API exposes the various ways you can interact with the back-end of the application.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+The purpose of this documentation is to provide information about the following:
+  - Endpoint names & descriptions
+  - Parameter names, descriptions, & types
+  - Example requests & responses
+  - Status codes
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Example requests in Shell and JavaScript using the axios library!
 
-# Authentication
 
-> To authorize, use this code:
+# Users
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+## Get a User
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+curl "http://localhost:3000/userInfo/itsme123" \
+  -X GET \
 ```
 
 ```javascript
-const kittn = require('kittn');
+const axios = require('axios');
 
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+axios.get('http://localhost:3000/userInfo/itsme123');
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "_id": "itsme123",
+  "username": "Max",
+  "name": "unknown",
+  "picture": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+  "updated_at": "2020-12-29T21:28:15.625Z",
+  "email": "frostedDonut123@gmail.com",
+  "recipes": [
+    {
+      "owner": "itsme123",
+      "recipeName": "Soupie Soup",
+      "category": ["Dinner", "Soup"],
+      "rating": 3.5,
+      "shared": "Only me",
+      "ingredients": ["carrot", "celery", "onion", "basil", "salt", "pepper", "potato", "tomato", "chicken broth"],
+      "time": 45,
+      "difficulty": "Easy",
+      "favoritedBy": [2],
+      "vegan": false,
+      "steps": ["Chop veggies", "Combine in pot", "Add salt and pepper to taste", "Mix the rest of the ingredients", "Cook on stove for 25 min"],
+      "imageUrl": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "..."
+    },
+  ],
+  "favoriteRecipes": ["array of recipe objects"],
+  "friends": [
+    {
+      "_id": "friend234543",
+      "username": "friendlyFriend",
+      "name": "Mr.Friend",
+      "..."
+    }
+  ]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves a specific user.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://localhost:3000/userInfo/:id`
 
-### Query Parameters
+### URL Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Description
+--------- | -----------
+id | The id of the user to retrieve. This will eventually be available in the Redux store for the logged-in user.
+
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+The author of these docs is looking for a job :)
+e-mail: rickhawley109@gmail.com
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Add a User
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
+curl "http://localhost:3000/addUser" \
+  -X POST \
 ```
 
 ```javascript
-const kittn = require('kittn');
+const axios = require("axios");
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+axios.post("http://localhost:3000/addUser", {
+  "username": "woolSocks",
+  "name": "warm",
+  "picture": "https://s.gravatar.com/avatar/6e785eb0726d6552198006f3bc03d4f6?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fri.png"
+  "updated_at": "2020-12-29T21:28:15.625Z",
+  "email": "myFeetAreWarm@test.com"
+});
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "_id": "DJFKVN324JSFK",
+  "username": "woolSocks",
+  "name": "warm",
+  "picture": "https://s.gravatar.com/avatar/6e785eb0726d6552198006f3bc03d4f6?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fri.png",
+  "updated_at": "2020-12-29T21:28:15.625Z",
+  "email": "myFeetAreWarm@test.com",
+  "recipes": [],
+  "favoriteRecipes": [],
+  "friends": []
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint adds a new user to the database and returns the newly added user.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://localhost:3000/addUser`
 
-### URL Parameters
+### Request Body
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Field | Type | Description
+----- | ---- | -----------
+username | String | The username of the user.
+name | String | The name of the user.
+picture | String | The url of the users profile picture.
+updated_at | String | Timestamp of when the user signed up.
+email | String | The email of the user.
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+# Recipes
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
+curl "http://localhost:3000/addRecipe" \
+  -X POST \
 ```
 
 ```javascript
-const kittn = require('kittn');
+const axios = require("axios");
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+/* COMING SOON */
+
 ```
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
+## Add a Recipe
+This endpoint adds a new recipe for a specific user.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`POST http://localhost:3000/addRecipe`
 
-### URL Parameters
+### Request Body
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Field | Type | Description
+----- | ---- | -----------
+id | String | The id of the user.
+recipe | Object | The recipe object to add.
+
+
 
