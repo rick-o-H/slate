@@ -346,14 +346,14 @@ id | The id of the user.
 ## Get all recipes
 
 ```shell
-curl "http://localhost:3000/allRecipe" \
+curl "http://localhost:3000/allRecipes" \
   -X GET \
 ```
 
 ```javascript
 const axios = require('axios');
 
-axios.get('http://localhost:3000/allRecipe');
+axios.get('http://localhost:3000/allRecipes');
 ```
 
 > The above command returns JSON structured like this:
@@ -458,7 +458,36 @@ const axios = require('axios');
 axios.get('http://localhost:3000/addRecipe');
 ```
 
-## Add a Recipe
+## Add a recipe
+
+```shell
+curl "http://localhost:3000/addRecipe" \
+  -X POST \
+```
+
+```javascript
+const axios = require('axios');
+
+axios.POST('http://localhost:3000/addRecipe', {
+    "id": "5ff4cb0f5ad5ca479d398313",
+    "recipe":
+    {
+        "recipeName": "ice cream",
+        "category": "breakfast",
+        "shared": "Friends",
+        "ingredients": ["ice cream", "ice cream"],
+        "time": 1,
+        "difficulty": "expert",
+        "favoritedBy": [3, 4, 10],
+        "vegan": false,
+        "steps": ["scoop", "eat"],
+        "imageUrl": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    }
+});
+```
+
+> The above returns status code 200 upon completion.
+
 This endpoint adds a new recipe for a specific user.
 
 ### HTTP Request
@@ -471,6 +500,21 @@ Field | Type | Description
 ----- | ---- | -----------
 id | String | The id of the user.
 recipe | Object | The recipe object to add.
+
+#### Recipe object
+
+Field | Type | Description
+----- | ---- | -----------
+recipeName | String | The name for the recipe.
+category | String | The category of the recipe (Breakfast, Lunch, Dinner, Snack, Beverage, Dessert).
+shared | String | Visibility of the recipe (onlyMe, friends, everyone).
+ingredients | Array | An array of strings that represent each individual ingredient of the recipe.
+time | Number | The prep time for the recipe in minutes.
+difficulty | String | A string representing the difficulty level for the recipe (easy, medium, hard, expert).
+favoritedBy | Array | An array of strings representing the user id's that have favorited the recipe.
+vegan | Boolean | True if recipe is vegan, false if not.
+steps | Array | An array of string that represent each individual step required to prepare the recipe.
+imageUrl | String | A String representing the url for the recipe's image.
 
 # Friends
 
@@ -554,14 +598,14 @@ axios.POST('http://localhost:3000/addFriend', {
 });
 ```
 
-> The above returns status code 200 upon completion:
+> The above returns status code 200 upon completion.
 
 
 This endpoint adds a friend to a user's friends list.
 
 ### HTTP Request
 
-`POST http://localhost:3000/addFriend/`
+`POST http://localhost:3000/addFriend`
 
 ### Request Body
 
