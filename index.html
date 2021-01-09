@@ -333,7 +333,7 @@
                     <a href="#get-all-recipes" class="toc-h2 toc-link" data-title="Get all recipes">Get all recipes</a>
                   </li>
                   <li>
-                    <a href="#add-a-recipe" class="toc-h2 toc-link" data-title="Add a Recipe">Add a Recipe</a>
+                    <a href="#add-a-recipe" class="toc-h2 toc-link" data-title="Add a recipe">Add a recipe</a>
                   </li>
               </ul>
           </li>
@@ -679,11 +679,11 @@ e-mail: rickhawley109@gmail.com
 <td>The id of the user.</td>
 </tr>
 </tbody></table>
-<h2 id='get-all-recipes'>Get all recipes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/allRecipe"</span> <span class="se">\</span>
+<h2 id='get-all-recipes'>Get all recipes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/allRecipes"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/allRecipe</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/allRecipes</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -776,7 +776,31 @@ e-mail: rickhawley109@gmail.com
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/addRecipe</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div><h2 id='add-a-recipe'>Add a Recipe</h2>
+</code></pre></div><h2 id='add-a-recipe'>Add a recipe</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/addRecipe"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">POST</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/addRecipe</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">5ff4cb0f5ad5ca479d398313</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">recipe</span><span class="dl">"</span><span class="p">:</span>
+    <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">recipeName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ice cream</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">breakfast</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">shared</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Friends</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">ingredients</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">ice cream</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ice cream</span><span class="dl">"</span><span class="p">],</span>
+        <span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">difficulty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">expert</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">favoritedBy</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+        <span class="dl">"</span><span class="s2">vegan</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">steps</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">scoop</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">eat</span><span class="dl">"</span><span class="p">],</span>
+        <span class="dl">"</span><span class="s2">imageUrl</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80</span><span class="dl">"</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The above returns status code 200 upon completion.</p>
+</blockquote>
+
 <p>This endpoint adds a new recipe for a specific user.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST http://localhost:3000/addRecipe</code></p>
@@ -797,6 +821,65 @@ e-mail: rickhawley109@gmail.com
 <td>recipe</td>
 <td>Object</td>
 <td>The recipe object to add.</td>
+</tr>
+</tbody></table>
+<h4 id='recipe-object'>Recipe object</h4>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recipeName</td>
+<td>String</td>
+<td>The name for the recipe.</td>
+</tr>
+<tr>
+<td>category</td>
+<td>String</td>
+<td>The category of the recipe (Breakfast, Lunch, Dinner, Snack, Beverage, Dessert).</td>
+</tr>
+<tr>
+<td>shared</td>
+<td>String</td>
+<td>Visibility of the recipe (onlyMe, friends, everyone).</td>
+</tr>
+<tr>
+<td>ingredients</td>
+<td>Array</td>
+<td>An array of strings that represent each individual ingredient of the recipe.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>Number</td>
+<td>The prep time for the recipe in minutes.</td>
+</tr>
+<tr>
+<td>difficulty</td>
+<td>String</td>
+<td>A string representing the difficulty level for the recipe (easy, medium, hard, expert).</td>
+</tr>
+<tr>
+<td>favoritedBy</td>
+<td>Array</td>
+<td>An array of strings representing the user id&#39;s that have favorited the recipe.</td>
+</tr>
+<tr>
+<td>vegan</td>
+<td>Boolean</td>
+<td>True if recipe is vegan, false if not.</td>
+</tr>
+<tr>
+<td>steps</td>
+<td>Array</td>
+<td>An array of string that represent each individual step required to prepare the recipe.</td>
+</tr>
+<tr>
+<td>imageUrl</td>
+<td>String</td>
+<td>A String representing the url for the recipe&#39;s image.</td>
 </tr>
 </tbody></table>
 <h1 id='friends'>Friends</h1><h2 id='get-all-users-that-match-a-name-search'>Get all users that match a name search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/friends/jo"</span> <span class="se">\</span>
@@ -868,12 +951,12 @@ e-mail: rickhawley109@gmail.com
 <span class="p">});</span>
 </code></pre></div>
 <blockquote>
-<p>The above returns status code 200 upon completion:</p>
+<p>The above returns status code 200 upon completion.</p>
 </blockquote>
 
 <p>This endpoint adds a friend to a user&#39;s friends list.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST http://localhost:3000/addFriend/</code></p>
+<p><code>POST http://localhost:3000/addFriend</code></p>
 <h3 id='request-body-3'>Request Body</h3>
 <table><thead>
 <tr>
