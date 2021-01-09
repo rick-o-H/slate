@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;javascript&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -298,8 +298,8 @@
     <div class="toc-wrapper">
       <img src="images/logo-e7fd8274.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">shell</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -313,10 +313,10 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-a-user" class="toc-h2 toc-link" data-title="Get a User">Get a User</a>
+                    <a href="#get-a-user" class="toc-h2 toc-link" data-title="Get a user">Get a user</a>
                   </li>
                   <li>
-                    <a href="#add-a-user" class="toc-h2 toc-link" data-title="Add a User">Add a User</a>
+                    <a href="#check-and-add-user" class="toc-h2 toc-link" data-title="Check and add user">Check and add user</a>
                   </li>
               </ul>
           </li>
@@ -324,7 +324,27 @@
             <a href="#recipes" class="toc-h1 toc-link" data-title="Recipes">Recipes</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#get-a-recipe" class="toc-h2 toc-link" data-title="Get a recipe">Get a recipe</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-recipes-for-a-specific-user" class="toc-h2 toc-link" data-title="Get all recipes for a specific user">Get all recipes for a specific user</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-recipes" class="toc-h2 toc-link" data-title="Get all recipes">Get all recipes</a>
+                  </li>
+                  <li>
                     <a href="#add-a-recipe" class="toc-h2 toc-link" data-title="Add a Recipe">Add a Recipe</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#friends" class="toc-h1 toc-link" data-title="Friends">Friends</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-users-that-match-a-name-search" class="toc-h2 toc-link" data-title="Get all users that match a name search">Get all users that match a name search</a>
+                  </li>
+                  <li>
+                    <a href="#add-a-friend" class="toc-h2 toc-link" data-title="Add a friend">Add a friend</a>
                   </li>
               </ul>
           </li>
@@ -350,25 +370,25 @@
   - Status codes</p>
 
 <p>Example requests in Shell and JavaScript using the axios library!</p>
-<h1 id='users'>Users</h1><h2 id='get-a-user'>Get a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/userInfo/itsme123"</span> <span class="se">\</span>
+<h1 id='users'>Users</h1><h2 id='get-a-user'>Get a user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/userInfo/5ff4903962127775787d7d8f"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/userInfo/itsme123</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/userInfo/5ff4903962127775787d7d8f</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itsme123"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rick"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rick"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-29T21:28:15.625Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frostedDonut123@gmail.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"itsme123"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soupie Soup"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Dinner"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Soup"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.5</span><span class="p">,</span><span class="w">
@@ -376,7 +396,7 @@
       </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"carrot"</span><span class="p">,</span><span class="w"> </span><span class="s2">"celery"</span><span class="p">,</span><span class="w"> </span><span class="s2">"onion"</span><span class="p">,</span><span class="w"> </span><span class="s2">"basil"</span><span class="p">,</span><span class="w"> </span><span class="s2">"salt"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pepper"</span><span class="p">,</span><span class="w"> </span><span class="s2">"potato"</span><span class="p">,</span><span class="w"> </span><span class="s2">"tomato"</span><span class="p">,</span><span class="w"> </span><span class="s2">"chicken broth"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
       </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Easy"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"5ff4f75dc00ca596bc43dae1"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Chop veggies"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Combine in pot"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Add salt and pepper to taste"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Mix the rest of the ingredients"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Cook on stove for 25 min"</span><span class="p">],</span><span class="w">
       </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="w">
@@ -408,7 +428,7 @@
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>The id of the user to retrieve. This will eventually be available in the Redux store for the logged-in user.</td>
+<td>The id of the user to retrieve.</td>
 </tr>
 </tbody></table>
 
@@ -416,16 +436,17 @@
 The author of these docs is looking for a job :)
 e-mail: rickhawley109@gmail.com
 </aside>
-<h2 id='add-a-user'>Add a User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/addUser"</span> <span class="se">\</span>
+<h2 id='check-and-add-user'>Check and add user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/checkUser"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3000/addUser</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">http://localhost:3000/checkUser</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
   <span class="dl">"</span><span class="s2">username</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">woolSocks</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">warm</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">picture</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://s.gravatar.com/avatar/6e785eb0726d6552198006f3bc03d4f6?s=480&amp;r=pg&amp;d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fri.png</span><span class="dl">"</span>
   <span class="dl">"</span><span class="s2">updated_at</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2020-12-29T21:28:15.625Z</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">myFeetAreWarm@test.com</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">sub</span><span class="dl">"</span><span class="p">:</span>
 <span class="p">});</span>
 </code></pre></div>
 <blockquote>
@@ -440,12 +461,13 @@ e-mail: rickhawley109@gmail.com
   </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myFeetAreWarm@test.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="nl">"favoriteRecipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nl">"friends"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="nl">"friends"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"116155093460479402279"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint adds a new user to the database and returns the newly added user.</p>
+<p>This endpoint checks if a exists in the database, adds a new user to the database if they do not, and returns that user.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://localhost:3000/addUser</code></p>
+<p><code>POST http://localhost:3000/checkUser</code></p>
 <h3 id='request-body'>Request Body</h3>
 <table><thead>
 <tr>
@@ -479,16 +501,284 @@ e-mail: rickhawley109@gmail.com
 <td>String</td>
 <td>The email of the user.</td>
 </tr>
+<tr>
+<td>sub</td>
+<td>String</td>
+<td>The auth identifier of the user.</td>
+</tr>
 </tbody></table>
-<h1 id='recipes'>Recipes</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/addRecipe"</span> <span class="se">\</span>
+<h1 id='recipes'>Recipes</h1><h2 id='get-a-recipe'>Get a recipe</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/recipe/5ff6295bfbf23f210dad6ffb"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/recipe/5ff6295bfbf23f210dad6ffb</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"ice cream"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ice cream"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"scoop"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eat"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff6295bfbf23f210dad6ffb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ice cream"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"breakfast"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Friends"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expert"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific recipe.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://localhost:3000/recipe/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the recipe to retrieve.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-recipes-for-a-specific-user'>Get all recipes for a specific user</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/userRecipes/5ff6295bfbf23f210dad6ffb"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/userRecipes/5ff6295bfbf23f210dad6ffb</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"carrot"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"celery"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"onion"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"basil"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"salt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pepper"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"potato"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tomato"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chicken broth"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Chop veggies"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Combine in pot"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Add salt and pepper to taste"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Mix the rest of the ingredients"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Cook on stove for 25 min"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff497858240870659b5889e"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soupie Soup"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Only me"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Easy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Fish"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Chips"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Fry the fish to golden brown on medium frying pan"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Make the chips"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Enjoy!"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4a03da290d60695f324d1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fish and Chips"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everyone"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Easy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Ribs"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"BBQ sauce"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Salt"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Pepper"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Cover ribs in BBQ sauce"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Add salt and pepper"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Smoke for 6 hours"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4af204d815706c118db00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ribs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everyone"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Medium"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Ground Beef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Burger Bun"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Ketchup"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Mustard"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Tomato"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Onion"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Flatten ground beef into burger patties"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Grill until fully cooked"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Add desired toppings"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4afd54d815706c118db01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Burger"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everyone"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Easy"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all recipes that belong to a specific user.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://localhost:3000//userRecipes/:id</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the user.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-recipes'>Get all recipes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/allRecipe"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/allRecipe</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"pepper"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"butter"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sauce"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"do something"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"then something"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff25a515e53a4ccb1d12e75"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff250aeabc667cae1ca4882"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PASTA YO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yes"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EASY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://s.gravatar.com/avatar/6e785eb0726d6552198006f3bc03d4f6?s=480&amp;r=pg&amp;d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fri.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"carrot"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"celery"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"onion"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"basil"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"salt"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pepper"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"potato"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tomato"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"chicken broth"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Chop veggies"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Combine in pot"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Add salt and pepper to taste"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Mix the rest of the ingredients"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Cook on stove for 25 min"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff497858240870659b5889e"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Soupie Soup"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Only me"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Easy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Fish"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Chips"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"favoritedBy"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"steps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Fry the fish to golden brown on medium frying pan"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Make the chips"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Enjoy!"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4a03da290d60695f324d1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4903962127775787d7d8f"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"recipeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fish and Chips"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"shared"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Everyone"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"difficulty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Easy"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vegan"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"imageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all recipes.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://localhost:3000/allRecipe</code></p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/addRecipe"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">axios</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="cm">/* COMING SOON */</span>
-
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/addRecipe</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div><h2 id='add-a-recipe'>Add a Recipe</h2>
 <p>This endpoint adds a new recipe for a specific user.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>POST http://localhost:3000/addRecipe</code></p>
 <h3 id='request-body-2'>Request Body</h3>
 <table><thead>
@@ -507,6 +797,100 @@ e-mail: rickhawley109@gmail.com
 <td>recipe</td>
 <td>Object</td>
 <td>The recipe object to add.</td>
+</tr>
+</tbody></table>
+<h1 id='friends'>Friends</h1><h2 id='get-all-users-that-match-a-name-search'>Get all users that match a name search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/friends/jo"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/friends/jo</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5ff25a515e53a4ccb1d12e75"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff4af204d815706c118db00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff4afd54d815706c118db01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff497858240870659b5889e"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff4a03da290d60695f324d1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff67130b77097471d0526f6"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff63ed23bfd6c7115e5c9d2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff6298efbf23f210dad6ffc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff66dc032598568b8053165"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"favoriteRecipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"friends"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"5ff2381f11fa42c5cd024b55"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff250aeabc667cae1ca4882"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff397ea240989274d88c370"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff4e3c635d52f0c150c7107"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff5f3cb784e008507853d69"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"5ff4ae1ee313134de4f31ba4"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ff4e292f9884a1aaebc1cae"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jonathan"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lh3.googleusercontent.com/a-/AOh14GigZeSo4fmuzlYR_oYon8vlnE7AzjFNTuUfl-Ek=s96-c"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-01T17:08:03.805Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email7@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103370284414679082948"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"__v"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"..."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all users whose name partially matches the search term.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET http://localhost:3000/friends/:name</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The name of the user to search. Can be one letter, like B, to return all users with a B in their name.</td>
+</tr>
+</tbody></table>
+<h2 id='add-a-friend'>Add a friend</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://localhost:3000/addFriend"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="nx">POST</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://localhost:3000/addFriend</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">5ff4903962127775787d7d8f</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">friendId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">5ff4f75dc00ca596bc43dae1</span><span class="dl">"</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The above returns status code 200 upon completion:</p>
+</blockquote>
+
+<p>This endpoint adds a friend to a user&#39;s friends list.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>POST http://localhost:3000/addFriend/</code></p>
+<h3 id='request-body-3'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The id of the user that wants to add a friend.</td>
+</tr>
+<tr>
+<td>friendID</td>
+<td>String</td>
+<td>The id of the friend to be added.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
@@ -571,8 +955,8 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">shell</a>
           </div>
       </div>
     </div>
